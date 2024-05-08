@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Age Calculator</title>
+    <style>
+      body {
+        background-image: linear-gradient(
+          rgb(23, 23, 32),
+          rgb(36, 99, 99),
+          rgb(103, 48, 103)
+        );
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+      .main {
+        font-size: 40px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        /* display: flex; */
+        flex-direction: column;
+        height: auto;
+        width: fit-content;
+        border: 1px solid black;
+        align-items: center;
+        margin: auto;
+        margin-top: 50px;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        box-shadow:  0 0 10px 10px rgb(156, 81, 145);
+        border-radius: 25px;
+        color: aliceblue;
+        text-shadow: -2px 2px  3px rgb(148, 68, 136);
+      }
+      input {
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        /* width: fit-content;   */
+        text-align: center;
+        align-items: center;
+        margin:30px;
+        padding: 10px;
+        font-size: 2.5rem;
+        box-shadow:  0 0 10px 10px rgb(81, 145, 156);
+        border-radius: 15px;
+        outline: none;
+        border: none;
+      }
+
+      #ageButton{
+        border: 5px solid;
+        border-radius: 5px;
+        background-color: rgb(92, 209, 39);
+        color: wheat;
+        font-size: 2.5rem;
+        cursor: pointer;
+        box-shadow: 0px 0px 4px 4px magenta;
+        transition: 1s ease;
+      }
+
+      #ageButton:hover {
+        background-color: transparent;
+        text-align: center;
+        background-color: rgb(23, 83, 148);
+      }
+      /* printing age */
+      #print{
+        font-size: 50px;
+        font-weight: 600;
+        text-shadow: -2px -2px 3px  cyan;
+      }
+      /* LIGHT */
+      h1 {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        background-color: #3a4040;
+        border-radius: 5px;
+        width: fit-content;
+        margin: 0 auto; /* Centering the h1 */
+        padding: 10px; /* Add padding for better appearance */
+      }
+
+      ul {
+        display: flex;
+        margin: 0;
+        padding: 0;
+      }
+
+      ul li {
+        letter-spacing: 10px;
+        color: rgb(226, 237, 237);
+        list-style: none;
+        font-size: 4rem;
+        animation: lighting 1s linear infinite;
+      }
+
+      @keyframes lighting {
+        0% {
+          color: rgb(202, 46, 197);
+          text-shadow: none;
+        }
+       25%{
+        color: rgb(32, 212, 65);
+        text-shadow: none;
+       }
+       50%{
+        color: rgb(32, 167, 212);
+        text-shadow: none;
+       }
+        75% {
+          color: rgb(27, 25, 28);
+          text-shadow: none;
+        }
+
+        100% {
+          text-shadow: 0 0 7px #ff7300, 0 0 50px rgb(255, 115, 0);
+        }
+      }
+
+      ul li:nth-child(1) {
+        animation-delay: 0;
+      }
+
+      ul li:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+
+      ul li:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+
+      ul li:nth-child(4) {
+        animation-delay: 0.3s;
+      }
+
+      ul li:nth-child(5) {
+        animation-delay: 0.4s;
+      }
+
+      ul li:nth-child(6) {
+        animation-delay: 0.5s;
+      }
+
+      ul li:nth-child(7) {
+        animation-delay: 0.6s;
+      }
+
+      ul li:nth-child(8) {
+        animation-delay: 0.7s;
+      }
+
+      ul li:nth-child(9) {
+        animation-delay: 0.8s;
+      }
+
+      ul li:nth-child(10) {
+        animation-delay: 0.9s;
+      }
+
+      ul li:nth-child(11) {
+        animation-delay: 1s;
+      }
+
+      ul li:nth-child(12) {
+        animation-delay: 1.1s;
+      }
+
+      ul li:nth-child(13) {
+        animation-delay: 1.2s;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      <ul>
+        <li>A</li>
+        <li>G</li>
+        <li>E</li>
+        <li>&nbsp</li>
+
+        <li>C</li>
+        <li>A</li>
+        <li>L</li>
+        <li>C</li>
+        <li>U</li>
+        <li>L</li>
+        <li>A</li>
+        <li>T</li>
+        <li>O</li>
+        <li>R</li>
+      </ul>
+    </h1>
+    <div class="main">
+        <p style="text-align: center;">
+          Enter Your Date of Birth:
+          <input type="date" id="dateOfBirth" />
+          <button onclick="calculateAge()" id="ageButton" class="btn">
+            Calculate Age
+          </button>
+        </p>
+        <p id="print">Your age is: <span id="result"></span></p>
+      </div>
+      
+      <script>
+        function calculateAge() {
+          let dateOfBirth = document.getElementById("dateOfBirth").value;
+          
+          if (!dateOfBirth) {
+            alert("Please Enter Your Date of Birth");
+            return;
+          }
+          
+          let birthDate = new Date(dateOfBirth);
+          let currentDate = new Date();
+      
+          // Calculate age
+          let ageInMilliseconds = currentDate - birthDate;
+          let ageInSeconds = ageInMilliseconds / 1000;
+          let ageInMinutes = ageInSeconds / 60;
+          let ageInHours = ageInMinutes / 60;
+          let ageInDays = ageInHours / 24;
+          let ageInYears = ageInDays / 365;
+      
+          // Display age
+          document.getElementById("result").textContent =
+            Math.floor(ageInYears) + " Years";
+        }
+      </script>
+      
+    
+    
+  </body>
+</html>
